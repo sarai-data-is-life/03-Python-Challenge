@@ -34,9 +34,13 @@ for numbers in range(number_files):
                 cand_data[row[0]] += 1
                 
         cand_data.pop("Candidate")
+        candList = [];
         total_votes = (sum(cand_data.values())) 
         sorted_cand_data = dict( sorted(cand_data.items(), key=operator.itemgetter(1),reverse=True))
         # adv_cand = list(sorted_cand_data.keys())
+
+        for x in sorted_cand_data:
+            candList.append(x)
 
         f = open("py_elections_results.txt", "w")
         f.write(
@@ -55,8 +59,8 @@ for numbers in range(number_files):
         f = open("py_elections_results.txt", "a")
         f.write(
         f"----------------------------------\n"
-        # f"1st Advancing Candidate: {adv_cand[0]} \n"
-        # f"2nd Advancing Candidate: {adv_cand[1]} \n"
+        f"1st Advancing Candidate: {candList[0]} \n"
+        f"2nd Advancing Candidate: {candList[1]} \n"
         f"----------------------------------\n")  
         f.close()
 
@@ -64,5 +68,5 @@ for numbers in range(number_files):
         print(f.read())
         f.close()
 
-        print(sorted_cand_data.keys())
-        # adv_cand = list(sorted_cand_data.keys())
+
+
